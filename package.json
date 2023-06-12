@@ -1,0 +1,14 @@
+{
+  "name": "algorithm_kata",
+  "version": "1.0.0",
+  "description": "A place to practice algorithms and data structures.",
+  "scripts": {
+    "test": "npx jest **/*.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}

@@ -1,0 +1,15 @@
+const reverse = head => {
+
+    if (! head || ! head.next ) return head
+
+    const newHead = reverse(head.next)
+
+    head.next.next = head
+    head.next = null
+
+    return newHead
+}
+
+module.exports = {
+    reverse
+}
