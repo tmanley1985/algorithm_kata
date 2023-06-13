@@ -23,7 +23,8 @@ describe('Max Product Subarray', () => {
                 
                 const testCases = [
                     { args: [2,3,-2,4], expected: 6 },
-                    { args: [-2,0,-1], expected: 0}
+                    { args: [-2,0,-1], expected: 0 },
+                    { args: [-2,3,-4], expected: 24 }
                 ]
 
                 for (const {args, expected} of testCases) {
