@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-Find the maximum common substring between two words. The order has to be strictly increasing, meaning that, you can't skip elements and shit like that.
+Find the maximum common substring between two words. The order has to be strictly increasing, meaning that, you can't skip elements.
 
 ## Recursive Intuition
 
@@ -29,7 +29,7 @@ Then you'll perform a double loop over the rows and the columns but remember: ro
 
 At every point in the loop you're going to ask if there's a matching branch. If there isn't, you can just continue onto the next iteration. There's nothing to do.
 
-If there is a match, you'll update the running max variable to be equal to 1 + dp[row - 1][column - 1]. Why? Well let's break it down:
+If there is a match, you'll update the running max variable to be equal to `1 + dp[row - 1][column - 1]`. Why? Well let's break it down:
 
 - You add 1 because you have a match between both characters. That should count toward the longest substring. If you match the A in `BAN` and `LAM`, that shouldn't give you a substring of 2 right? You have a longest substring of exactly 1.
 - You add the diagonal north left cell because that represents the previous contiguous longest common substring.
