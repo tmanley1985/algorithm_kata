@@ -1,62 +1,53 @@
+const targetSumRecursive = (nums, target) => {
+  const dp = {}
 
-const findTargetSumWays = (nums, target) => {
+  const backtrack = (i = 0, remaining = target) => {
+    const seenKey = `${i},${remaining}`
 
-    const dp = {}
+    if (i === nums.length) return remaining === 0 ? 1 : 0
 
-    const backtrack = (i = 0, remaining = target) => {
+    if (seenKey in dp) return dp[seenKey]
 
-        const seenKey = `${i},${remaining}`
+    dp[seenKey] =
+      backtrack(i + 1, remaining - nums[i]) +
+      backtrack(i + 1, remaining + nums[i])
 
-        if (i === nums.length) return remaining === 0 ? 1 : 0
+    return dp[seenKey]
+  }
 
-        if (seenKey in dp) return dp[seenKey]
-
-        dp[seenKey] = backtrack(i + 1, remaining - nums[i]) + backtrack(i + 1, remaining + nums[i])
-
-        return dp[seenKey]
-    }
-
-    return backtrack()
+  return backtrack()
 }
 
-const findTargetSumWaysTab = (nums, target) => {
+const targetSumDP = (nums, target) => {
+  const offset = nums.reduce((acc, val) => acc + val, 0)
 
-    const offset = nums.reduce((acc, val) => acc + val, 0)
+  const NUM_COLS = offset * 2 + 1
 
-    const NUM_COLS = (offset * 2) + 1
+  const NUM_ROWS = nums.length + 1
 
-    const NUM_ROWS = nums.length + 1
+  const dp = Array.from({ length: NUM_ROWS }).map(_ =>
+    Array.from({ length: NUM_COLS }).fill(0)
+  )
 
-    const dp = Array.from({length: NUM_ROWS})
-        .map(_ => Array.from({length: NUM_COLS}).fill(0))
+  dp[0][offset] = 1
 
-    dp[0][offset] = 1
+  for (let row = 0; row < NUM_ROWS - 1; row++) {
+    for (let column = 0; column < NUM_COLS; column++) {
+      const numWays = dp[row][column]
 
-    for (let row = 0; row < NUM_ROWS - 1; row++) {
+      if (numWays > 0) {
+        const absolute_distance_from_zero = nums[row]
 
-        for (let column = 0; column < NUM_COLS; column++) {
-            
-            const numWays = dp[row][column]
-
-            if (numWays > 0) {
-
-                const absolute_distance_from_zero = nums[row]
-
-                dp[row + 1][column - absolute_distance_from_zero] += numWays
-                dp[row + 1][column + absolute_distance_from_zero] += numWays
-            }
-        }
+        dp[row + 1][column - absolute_distance_from_zero] += numWays
+        dp[row + 1][column + absolute_distance_from_zero] += numWays
+      }
     }
+  }
 
-    console.table(dp)
-
-    return dp[nums.length][target + offset]
+  return dp[nums.length][target + offset]
 }
 
-console.log(findTargetSumWays([1,1,1,1,1], 3)) // 5
-console.log(findTargetSumWays([1,2], 3)) // 1
-console.log(findTargetSumWays([1,2,3], 3)) // 0
-
-console.log(findTargetSumWaysTab([1,1,1,1,1], 3)) // 5
-console.log(findTargetSumWaysTab([1,2], 3)) // 1
-console.log(findTargetSumWaysTab([1,2,3], 3)) // 0
+module.exports = {
+  targetSumRecursive,
+  targetSumDP,
+}

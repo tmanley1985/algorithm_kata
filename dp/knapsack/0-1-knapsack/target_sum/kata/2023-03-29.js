@@ -1,25 +1,23 @@
+const targetSumRecursive = (nums, target) => {
+  const dp = {}
 
-const targetSum = (nums, target) => {
+  const backtrack = (currentSum = 0, currentIndex = 0) => {
+    const key = `${currentIndex},${currentSum}`
 
-    const dp = {}
+    if (currentIndex === nums.length) return currentSum === target ? 1 : 0
 
-    const backtrack = (currentSum = 0, currentIndex = 0) => {
-        const key = `${currentIndex},${currentSum}`
+    if (key in dp) return dp[key]
 
-        if (currentIndex === nums.length) return currentSum === target ? 1 : 0
-    
+    dp[key] =
+      backtrack(currentSum - nums[currentIndex], currentIndex + 1) +
+      backtrack(currentSum + nums[currentIndex], currentIndex + 1)
 
-        if (key in dp) return dp[key]
+    return dp[key]
+  }
 
-        dp[key] = backtrack(currentSum - nums[currentIndex], currentIndex + 1) + backtrack(currentSum + nums[currentIndex], currentIndex + 1)
-
-        return dp[key]
-    }
-
-    return backtrack()
-
+  return backtrack()
 }
 
-console.log(targetSum([1,1,1,1,1], 3))
-console.log(targetSum([1,2], 3))
-console.log(targetSum([1,2,3], 3))
+module.exports = {
+  targetSumRecursive,
+}
