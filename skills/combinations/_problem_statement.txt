@@ -1,3 +1,0 @@
-For a list of N things, there should be 2 ^ N combinations because
-each choice is binary (to keep the current element or not)
-in a combination the order doesn't matter, so AB === BA.

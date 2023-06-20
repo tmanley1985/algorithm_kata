@@ -1,3 +1,0 @@
-Sometimes you have a dp array and you need the diagonal
-line to be filled in with default values such as with the palindromic subsequence
-problem.
