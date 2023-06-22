@@ -1,47 +1,36 @@
-
 const rob = houses => {
+  const dfs = (i = 0) => {
+    if (i >= houses.length) return 0
 
-    const dfs = (i = 0) => {
-        if (i >= houses.length) return 0
+    return Math.max(dfs(i + 1), houses[i] + dfs(i + 2))
+  }
 
-
-        return Math.max(i + 1, houses[i] + dfs(i + 2))
-    }
-
-    return dfs()
+  return dfs()
 }
 
-const log = console.log
-
-log(rob([1,2,3,1])) // 4
-
-
-// https://www.youtube.com/watch?v=xlvhyfcoQa4&ab_channel=KevinNaughtonJr.
 const robTab = houses => {
+  if (houses.length === 0) return 0
 
-    if (houses.length === 0) return 0
+  if (houses.length === 1) return houses[0]
 
-    if (houses.length === 1) return houses[0]
+  if (houses.length === 1) return Math.max(houses[0], houses[1])
 
-    if (houses.length === 1) return Math.max(houses[0], houses[1])
+  const dp = Array.from({ length: houses.length })
 
-    const dp = Array.from({ length: houses.length })
+  // The maximum amount you can rob at this position is the amount itself!
+  dp[0] = houses[0]
+  dp[1] = Math.max(houses[0], houses[1])
 
-    // The maximum amount you can rob at this position is the amount itself!
-    dp[0] = houses[0]
-    dp[1] = Math.max(houses[0], houses[1])
+  for (let i = 2; i < dp.length; i++) {
+    // We're asking the question, which is greater, the house that we're on plus the other house
+    // or the house right next to me?
+    dp[i] = Math.max(dp[i - 1], dp[i - 2] + houses[i])
+  }
 
-
-    for (let i = 2; i < dp.length; i++) {
-
-        // We're asking the question, which is greater, the house that we're on plus the other house
-        // or the house right next to me?
-        dp[i] = Math.max(dp[ i - 1], dp[i - 2] + houses[i])
-        
-    }
-
-    return dp[houses.length - 1]
-
+  return dp[houses.length - 1]
 }
 
-log(robTab([1,2,3,1])) // 4
+module.exports = {
+  rob,
+  robTab,
+}
