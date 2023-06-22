@@ -24,7 +24,6 @@ describe('Trie', () => {
                 let trie = TrieNode()
                 trie.addWord("hello")
 
-
                 expect(trie.search("hello")).toBe(true)
 
             });
