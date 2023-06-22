@@ -28,7 +28,6 @@ describe('Two Sum II', () => {
 
                 for (const {args, expected} of testCases) {
                     
-                    // [2,3] becomes [3,4] because of 1 based indexing.
                     expect(algorithmFunction(...args)).toEqual(expected)
                 }
                 

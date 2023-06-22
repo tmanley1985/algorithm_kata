@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { expect } = require('expect');
 
-describe('Three Sum', () => {
+describe('Min Size Subarray Sum', () => {
     const kataFolderPath = path.join(__dirname, 'kata');
 
     // Get the list of dated files within the kata folder
@@ -22,14 +22,13 @@ describe('Three Sum', () => {
             it(`Test ${functionName} from ${fileName}`, () => {
 
                 const testCases = [
-                    {args: [[3,7,1,2,8,4,5]], expected: [] },
-                    {args: [[0,0,0] ], expected: [[0,0,0]] },
-                    {args: [[-1,0,1,2,-1,-4] ], expected: [[-1,-1,2],[-1,0,1]] },
+                    {args: [[1,4,5,7], 100], expected: 0 },
+                    {args: [[2,1,5,2,8], 7], expected: 1 }, // (because 8 is greater than)
+                    {args: [[3, 2, 7, 10, 4, 1, 9, 8], 15], expected: 2 },
                 ]
 
-
                 for (const {args, expected} of testCases) {
-                    
+
                     expect(algorithmFunction(...args)).toEqual(expected)
                 }
                 

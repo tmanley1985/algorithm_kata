@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { expect } = require('expect');
 
-describe('Three Sum', () => {
+describe('IP Addresses', () => {
     const kataFolderPath = path.join(__dirname, 'kata');
 
     // Get the list of dated files within the kata folder
@@ -22,14 +22,14 @@ describe('Three Sum', () => {
             it(`Test ${functionName} from ${fileName}`, () => {
 
                 const testCases = [
-                    {args: [[3,7,1,2,8,4,5]], expected: [] },
-                    {args: [[0,0,0] ], expected: [[0,0,0]] },
-                    {args: [[-1,0,1,2,-1,-4] ], expected: [[-1,-1,2],[-1,0,1]] },
+                    {args: ["25525511135"], expected: ["255.255.11.135","255.255.111.35"] },
+                    {args: ["0000"], expected: ["0.0.0.0"] },
+                    {args: ["101023"], expected: ["1.0.10.23","1.0.102.3","10.1.0.23","10.10.2.3","101.0.2.3"] },
                 ]
 
 
                 for (const {args, expected} of testCases) {
-                    
+
                     expect(algorithmFunction(...args)).toEqual(expected)
                 }
                 

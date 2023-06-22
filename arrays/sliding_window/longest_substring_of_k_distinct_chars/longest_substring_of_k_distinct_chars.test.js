@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { expect } = require('expect');
 
-describe('Three Sum', () => {
+describe('Longest Substring Of K Distinct Characters', () => {
     const kataFolderPath = path.join(__dirname, 'kata');
 
     // Get the list of dated files within the kata folder
@@ -22,14 +22,13 @@ describe('Three Sum', () => {
             it(`Test ${functionName} from ${fileName}`, () => {
 
                 const testCases = [
-                    {args: [[3,7,1,2,8,4,5]], expected: [] },
-                    {args: [[0,0,0] ], expected: [[0,0,0]] },
-                    {args: [[-1,0,1,2,-1,-4] ], expected: [[-1,-1,2],[-1,0,1]] },
+                    {args: ["acccpbbebi", 3], expected: 6 },
+                    {args: ["aaaabbcccd", 1], expected: 4 },
+                    {args: ["abcdefg", 10], expected: 7 },
                 ]
 
-
                 for (const {args, expected} of testCases) {
-                    
+
                     expect(algorithmFunction(...args)).toEqual(expected)
                 }
                 
