@@ -1,36 +1,27 @@
-
 const BFS = head => {
-    if (! head) return head
+  if (!head) return head
 
-    const queue = [[head, 0]]
-    const levels = []
+  const queue = [[head, 0]]
+  const levels = []
 
-    while (queue.length) {
+  while (queue.length) {
+    const size = queue.length
 
-        const size = queue.length
+    for (let i = 0; i < size; i++) {
+      const [node, level] = queue.shift()
 
-        for (let i = 0; i < size; i++) {
-           
-            const [node, level] = queue.shift()
+      levels[level] = levels[level]
+        ? levels[level].concat(node.data)
+        : [node.data]
 
-            levels[level] = levels[level] ? levels[level].concat(node.data) : [node.data]
-
-            node.left && queue.push([ node.left, level + 1])
-            node.right && queue.push([ node.right, level + 1])
-            
-        }
-        
+      node.left && queue.push([node.left, level + 1])
+      node.right && queue.push([node.right, level + 1])
     }
+  }
 
-    return levels
+  return levels
 }
 
-const BNode = (data, left = null, right = null) => ({
-    data,
-    left,
-    right
-})
-
-const tree = BNode(1, BNode(2, BNode(4)), BNode(3, BNode(5)))
-
-console.log(BFS(tree))
+module.exports = {
+  BFS,
+}
