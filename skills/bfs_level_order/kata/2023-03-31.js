@@ -1,8 +1,8 @@
-const BFS = head => {
-  if (!head) return head
-
-  const queue = [[head, 0]]
+const bfs = root => {
   const levels = []
+  if (!root) return levels
+
+  const queue = [[root, 0]]
 
   while (queue.length) {
     const size = queue.length
@@ -10,9 +10,10 @@ const BFS = head => {
     for (let i = 0; i < size; i++) {
       const [node, level] = queue.shift()
 
-      levels[level] = levels[level]
-        ? levels[level].concat(node.data)
-        : [node.data]
+      levels[level] =
+        typeof levels[level] === "undefined"
+          ? [node.data]
+          : levels[level].concat(node.data)
 
       node.left && queue.push([node.left, level + 1])
       node.right && queue.push([node.right, level + 1])
@@ -23,5 +24,5 @@ const BFS = head => {
 }
 
 module.exports = {
-  BFS,
+  bfs,
 }

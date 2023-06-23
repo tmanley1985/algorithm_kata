@@ -1,8 +1,8 @@
-const BFS = head => {
-  const levels = []
-  if (!head) return levels
+const bfs = root => {
+  if (!root) return []
 
-  const queue = [[head, 0]]
+  const queue = [[root, 0]]
+  const levels = []
 
   while (queue.length) {
     const size = queue.length
@@ -23,5 +23,5 @@ const BFS = head => {
 }
 
 module.exports = {
-  BFS,
+  bfs,
 }

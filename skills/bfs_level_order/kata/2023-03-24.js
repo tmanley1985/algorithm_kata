@@ -1,14 +1,13 @@
-const BFS = root => {
-  const levels = []
-
-  if (!root) return levels
+const bfs = root => {
+  if (!root) return
 
   const queue = [[root, 0]]
+  const levels = []
 
   while (queue.length) {
     const size = queue.length
 
-    for (let i = 0; i < size; i++) {
+    for (let num_nodes = 0; num_nodes < size; num_nodes++) {
       const [node, level] = queue.shift()
 
       levels[level] = levels[level]
@@ -24,5 +23,5 @@ const BFS = root => {
 }
 
 module.exports = {
-  BFS,
+  bfs,
 }

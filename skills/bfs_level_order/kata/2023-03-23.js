@@ -1,4 +1,4 @@
-const BFS = root => {
+const bfs = root => {
   if (!root) return []
 
   const queue = [[root, 0]]
@@ -23,5 +23,5 @@ const BFS = root => {
 }
 
 module.exports = {
-  BFS,
+  bfs,
 }

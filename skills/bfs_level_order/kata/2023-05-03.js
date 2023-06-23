@@ -1,6 +1,5 @@
-const BFS = head => {
+const bfs = head => {
   const levels = []
-
   if (!head) return levels
 
   const queue = [[head, 0]]
@@ -24,5 +23,5 @@ const BFS = head => {
 }
 
 module.exports = {
-  BFS,
+  bfs,
 }
