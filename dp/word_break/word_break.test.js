@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { expect } = require('expect');
 
-describe('Two Sum II', () => {
+describe('Word Break', () => {
     const kataFolderPath = path.join(__dirname, 'kata');
 
     // Get the list of dated files within the kata folder
@@ -21,13 +21,15 @@ describe('Two Sum II', () => {
             // Define your test cases for each function from each dated file
             it(`Test ${functionName} from ${fileName}`, () => {
 
+
                 const testCases = [
-                    {args: [[1, 3, 4, 5, 7, 10, 11], 9 ], expected: [3,4] },
-                    {args: [[1,2,3,4,5], 8 ], expected: [3,5] }
+                    {args: ["codeleet", ["leet", "code"]], expected: true },
+                    {args: ["applepenapple", ["apple", "pen"]], expected: true },
+                    {args: ["catsandog", ["cats","dog","sand","and","cat"]], expected: false },
                 ]
 
                 for (const {args, expected} of testCases) {
-                    
+
                     expect(algorithmFunction(...args)).toEqual(expected)
                 }
                 

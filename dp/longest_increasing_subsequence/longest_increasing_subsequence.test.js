@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { expect } = require('expect');
 
-describe('Two Sum II', () => {
+describe('Longest Increasing Subsequence', () => {
     const kataFolderPath = path.join(__dirname, 'kata');
 
     // Get the list of dated files within the kata folder
@@ -21,13 +21,15 @@ describe('Two Sum II', () => {
             // Define your test cases for each function from each dated file
             it(`Test ${functionName} from ${fileName}`, () => {
 
+
                 const testCases = [
-                    {args: [[1, 3, 4, 5, 7, 10, 11], 9 ], expected: [3,4] },
-                    {args: [[1,2,3,4,5], 8 ], expected: [3,5] }
+                    {args: [[0,1,0,3,2,3]], expected: 4 },
+                    {args: [[10,9,2,5,3,7,101,18]], expected: 4 },
+                    {args: [[7,7,7,7,7,7,7]], expected: 1 },
                 ]
 
                 for (const {args, expected} of testCases) {
-                    
+
                     expect(algorithmFunction(...args)).toEqual(expected)
                 }
                 

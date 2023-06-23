@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { expect } = require('expect');
 
-describe('Two Sum II', () => {
+describe('Three Sum', () => {
     const kataFolderPath = path.join(__dirname, 'kata');
 
     // Get the list of dated files within the kata folder
@@ -22,9 +22,11 @@ describe('Two Sum II', () => {
             it(`Test ${functionName} from ${fileName}`, () => {
 
                 const testCases = [
-                    {args: [[1, 3, 4, 5, 7, 10, 11], 9 ], expected: [3,4] },
-                    {args: [[1,2,3,4,5], 8 ], expected: [3,5] }
+                    {args: [[3,7,1,2,8,4,5]], expected: [] },
+                    {args: [[0,0,0] ], expected: [[0,0,0]] },
+                    {args: [[-1,0,1,2,-1,-4] ], expected: [[-1,-1,2],[-1,0,1]] },
                 ]
+
 
                 for (const {args, expected} of testCases) {
                     

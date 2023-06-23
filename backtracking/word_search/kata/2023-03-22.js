@@ -38,7 +38,6 @@ const exists = (board, word) => {
 
   for (let r = 0; r < num_rows; r++) {
     for (let c = 0; c < num_cols; c++) {
-      console.log({ r, c })
       if (dfs(r, c, 0)) return true
     }
   }
