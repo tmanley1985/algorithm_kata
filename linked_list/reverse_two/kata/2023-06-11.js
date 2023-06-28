@@ -41,7 +41,6 @@ const LLNode = (data, next = null) => ({
   next,
 })
 const LL = LLNode(1, LLNode(2, LLNode(3, LLNode(4, LLNode(5)))))
-console.log(reverseBetween(LL, 2, 4))
 
 module.exports = {
   reverseBetween,
