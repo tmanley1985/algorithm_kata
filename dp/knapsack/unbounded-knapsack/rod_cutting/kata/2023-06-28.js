@@ -42,7 +42,24 @@ const rodCuttingMemo = (prices, length) => {
   return dfs(length)
 }
 
+const rodCuttingDP = (prices, length) => {
+  const dp = Array.from({ length: length + 1 }).fill(0)
+
+  for (let i = 1; i < dp.length; i++) {
+    let maxRevenue = Number.NEGATIVE_INFINITY
+
+    for (let j = 1; j <= i; j++) {
+      maxRevenue = Math.max(maxRevenue, prices[j] + dp[i - j])
+    }
+
+    dp[i] = maxRevenue
+  }
+
+  return dp[length]
+}
+
 module.exports = {
   rodCuttingRecursive,
   rodCuttingMemo,
+  rodCuttingDP,
 }
