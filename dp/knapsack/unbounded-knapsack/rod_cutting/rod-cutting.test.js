@@ -22,7 +22,8 @@ describe('Rod Cutting', () => {
             it(`Test ${functionName} from ${fileName}`, () => {
 
                 const testCases = [
-                    {args: [[0, 1, 5, 8, 9, 10, 17, 17, 20], 4 ], expected: 10 }
+                    {args: [[0, 1, 5, 8, 9, 10, 17, 17, 20], 4 ], expected: 10 },
+                    {args: [[0, 3, 5, 8, 9, 10, 17, 17, 20], 8 ], expected: 24 },
                 ]
 
                 for (const {args, expected} of testCases) {
