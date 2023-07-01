@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { expect } = require('expect');
 
-describe('Permutations', () => {
+describe('Permute An Array', () => {
     const kataFolderPath = path.join(__dirname, 'kata');
 
     // Get the list of dated files within the kata folder
@@ -22,8 +22,9 @@ describe('Permutations', () => {
             it(`Test ${functionName} from ${fileName}`, () => {
 
                 const testCases = [
-                    {args: ["abc"], expected: [ 'abc', 'acb', 'bac', 'bca', 'cba', 'cab' ] },
-                    {args: [""], expected: [] },
+                    {args: [[1,2,3]], expected: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,2,1],[3,1,2]] },
+                    {args: [[0,1]], expected: [[0,1],[1,0]] },
+                    {args: [[]], expected: [] },
 
                 ]
 
