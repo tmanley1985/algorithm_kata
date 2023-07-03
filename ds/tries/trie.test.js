@@ -25,6 +25,7 @@ describe('Trie', () => {
                 trie.addWord("hello")
 
                 expect(trie.search("hello")).toBe(true)
+                expect(trie.startsWith("hel")).toBe(true)
 
             });
         });

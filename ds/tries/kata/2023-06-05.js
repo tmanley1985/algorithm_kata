@@ -30,6 +30,16 @@ const TrieNode = (children = {}, isWord = false) => ({
 
     return current.isWord
   },
+  startsWith(prefix) {
+    let current = this
+
+    for (const letter of prefix) {
+      if (!(letter in current.children)) return false
+
+      current = current.children[letter]
+    }
+    return true
+  },
 })
 
 module.exports = {
