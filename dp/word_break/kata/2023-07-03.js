@@ -45,7 +45,7 @@ const wordBreakRecursive = (s, wordDict) => {
 
     let result = false
 
-    for (let j = 1; j < s.length; j++) {
+    for (let j = i; j < s.length; j++) {
       const word = s.slice(i, j + 1)
 
       if (seen.has(word)) {
