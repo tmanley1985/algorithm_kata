@@ -55,8 +55,6 @@ class DoublyLinkedList {
     this.connectNodes(this.head, this.tail)
   }
 
-  removeLast() {}
-
   add(node) {
     // You have to do this connection first, because
     // you'll override this.head.next in the next line.
