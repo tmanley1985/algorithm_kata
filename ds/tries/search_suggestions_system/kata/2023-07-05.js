@@ -26,6 +26,10 @@ class Trie {
     this.head = new TrieNode()
   }
 
+  // We're using letters here to add to the trie, but we could actually
+  // get the character code and store that instead, that would make it possible
+  // to get the next lexicographical element because we could start at 'a' and move through
+  // 'z' when looking at the next possible letters after the prefix in the trie.
   add(word) {
     let current = this.head
 
