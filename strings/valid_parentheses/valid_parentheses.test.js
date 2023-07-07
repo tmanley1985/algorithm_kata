@@ -31,7 +31,6 @@ describe('Valid Parentheses', () => {
 
 
                 for (const {args, expected} of testCases) {
-                    
                     expect(algorithmFunction(...args)).toEqual(expected)
                 }
                 
