@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { expect } = require('expect');
 
-describe('Valid Parentheses', () => {
+describe('Detect A Cycle', () => {
     const kataFolderPath = path.join(__dirname, 'kata');
 
     // Get the list of dated files within the kata folder
@@ -21,18 +21,21 @@ describe('Valid Parentheses', () => {
             // Define your test cases for each function from each dated file
             it(`Test ${functionName} from ${fileName}`, () => {
 
-                const testCases = [
-                    {args: ["{}"], expected: true },
-                    {args: ["{}[]()"], expected: true },
-                    {args: ["[}"], expected: false },
-                    {args: ["}{"], expected: false },
-                    {args: ["{{"], expected: false },
-                ]
+                const LLNode = (data, next = null) => ({
+                    data, next
+                })
 
+                const listWithCycle = LLNode(1)
+                const secondNode = LLNode(2)
+                listWithCycle.next = secondNode
+                secondNode.next = LLNode(3)
+                secondNode.next.next = LLNode(4)
+                secondNode.next.next.next = secondNode
 
-                for (const {args, expected} of testCases) {
-                    expect(algorithmFunction(...args)).toEqual(expected)
-                }
+                const listWithoutCycle = LLNode(1, LLNode(2, LLNode(3)))
+                
+                expect(algorithmFunction(listWithCycle)).toBe(true);
+                expect(algorithmFunction(listWithoutCycle)).toBe(false);
                 
             });
         });
