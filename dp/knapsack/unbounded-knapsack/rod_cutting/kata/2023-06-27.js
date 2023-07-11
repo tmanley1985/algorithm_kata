@@ -3,6 +3,10 @@ const rodCuttingRecursive = (prices, length) => {
 
   let maxRevenue = Number.NEGATIVE_INFINITY
 
+  // We can't have a negative rod length, so we should just return the identity
+  // element for the Max function which is negative infinity.
+  if (length < 0) return maxRevenue
+
   for (let i = 1; i <= length; i++) {
     maxRevenue = Math.max(
       maxRevenue,
