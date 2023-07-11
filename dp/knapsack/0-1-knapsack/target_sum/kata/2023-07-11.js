@@ -15,18 +15,16 @@ const targetSumDP = (nums, targetSum) => {
   const NUM_ROWS = nums.length + 1
 
   const dp = Array.from({ length: NUM_ROWS }).map(_ =>
-    Array.from({ length: NUM_ROWS }).fill(0)
+    Array.from({ length: NUM_COLS }).fill(0)
   )
 
   dp[0][offset] = 1
 
-  for (let row = 0; row < NUM_ROWS; row++) {
+  for (let row = 0; row < NUM_ROWS - 1; row++) {
     for (let column = 0; column < NUM_COLS; column++) {
-      const num = nums[column]
-
       if (dp[row][column] > 0) {
-        dp[row + 1][column + num] += dp[row][column]
-        dp[row + 1][column - num] += dp[row][column]
+        dp[row + 1][column + nums[row]] += dp[row][column]
+        dp[row + 1][column - nums[row]] += dp[row][column]
       }
     }
   }
@@ -36,4 +34,5 @@ const targetSumDP = (nums, targetSum) => {
 
 module.exports = {
   targetSumRecursive,
+  targetSumDP,
 }
