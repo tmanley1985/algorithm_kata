@@ -39,6 +39,8 @@ describe('Valid Tags', () => {
                     {args: ["content<A></A>"], expected: false },
                     // Tag more than three characters
                     {args: ["<ABCD></ABCD>"], expected: false },
+                    // string with no tags should not be valid
+                    {args: ["content"], expected: false },
                     
                 ]
 
