@@ -43,6 +43,17 @@ const findWords = (board, words) => {
 
     seen.add(seenKey)
 
+    // Here's the one thing that makes this different from normal word search.
+    // Obviously we're using a trie.
+    // But why also have the prefix being passed in?
+    // Well as you try new characters, you want to see if they're a child of the current node right?
+    // If the current character in the board isn't a child of the node you're on, you cannot make a
+    // any words with that. Fine. But if it is a child it means you can make a word.
+    // The prefix or the word candidate you're trying has to be passed in because as you traverse the trie
+    // you need to remember the path you took in order to form the word in the trie. But that's messy.
+    // Instead: THE WORD CANDIDATE ITSELF IS THE PATH.
+    // So when you go to push onto the array, you don't have to find out what original node you started on
+    // and retraverse the trie. You've kept track of the word you've been building.
     let next = currentNode.children[char]
     let newPrefix = prefix + char
 
