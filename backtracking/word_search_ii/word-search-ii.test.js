@@ -22,7 +22,12 @@ describe('Word Search II', () => {
             it(`Test ${functionName} from ${fileName}`, () => {
 
 
-                const board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]]
+                const board = [
+                    ["o","a","a","n"],
+                    ["e","t","a","e"],
+                    ["i","h","k","r"],
+                    ["i","f","l","v"]
+                ]
                 const words = ["oath","pea","eat","rain"]
 
                 const testCases = [
