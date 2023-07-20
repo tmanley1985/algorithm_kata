@@ -3,15 +3,13 @@ const editDistanceRecursive = (wordOne, wordTwo) => {
     if (i === wordOne.length) return wordTwo.length - j
     if (j === wordTwo.length) return wordOne.length - i
 
-    if (wordOne[i] === wordTwo[j]) {
-      return dfs(i + 1, j + 1)
-    }
+    if (wordOne[i] === wordTwo[j]) return dfs(i + 1, j + 1)
 
     const substitution = dfs(i + 1, j + 1)
     const deletion = dfs(i + 1, j)
-    const insertion = dfs(i, j + 1)
+    const addition = dfs(i, j + 1)
 
-    return 1 + Math.min(substitution, deletion, insertion)
+    return 1 + Math.min(substitution, deletion, addition)
   }
 
   return dfs()
