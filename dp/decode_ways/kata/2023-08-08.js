@@ -2,20 +2,19 @@ const decodeWays = s => {
   const dfs = (i = 0) => {
     if (i === s.length) return 1
 
-    let num = 0
+    let numWays = 0
 
     for (let j = i; j < Math.min(i + 2, s.length); j++) {
       const prefix = s.slice(i, j + 1)
-
       const isValid =
         (i === j && prefix[0] > 0) || (prefix[0] > 0 && prefix < 27)
 
       if (isValid) {
-        num += dfs(j + 1)
+        numWays += dfs(j + 1)
       }
     }
 
-    return num
+    return numWays
   }
 
   return dfs()
@@ -34,7 +33,6 @@ const decodeWaysTab = s => {
     if (0 < oneChar < 10) {
       dp[i] += dp[i - 1]
     }
-
     if (9 < twoChars < 27) {
       dp[i] += dp[i - 2]
     }

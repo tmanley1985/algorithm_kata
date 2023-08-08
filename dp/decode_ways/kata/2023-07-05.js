@@ -7,7 +7,7 @@ const decodeWays = s => {
     for (let j = i; j < Math.min(i + 2, s.length); j++) {
       const prefix = s.slice(i, j + 1)
 
-      const valid = (i === j && prefix[0] > 0) || 0 < prefix[0] < 27
+      const valid = (i === j && prefix[0] > 0) || 0 < prefix < 27
 
       if (valid) {
         num += dfs(j + 1)
