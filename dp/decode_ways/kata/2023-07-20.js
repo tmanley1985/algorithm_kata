@@ -8,7 +8,7 @@ const decodeWays = s => {
       const prefix = s.slice(i, j + 1)
 
       const isValid =
-        (i === j && prefix[0] > 0) || (prefix[0] > 0 && prefix[0] < 27)
+        (i === j && prefix[0] > 0) || (prefix[0] > 0 && prefix < 27)
 
       if (isValid) {
         num += dfs(j + 1)
