@@ -1,0 +1,46 @@
+const decodeWays = s => {
+  const dfs = (i = 0) => {
+    if (i === s.length) return 1
+    let numWays = 0
+
+    for (let j = i; j < Math.min(i + 2, s.length); j++) {
+      const substring = s.substring(i, j + 1)
+
+      const isValid =
+        (i === j && substring[0] > 0) || (substring[0] > 0 && substring < 27)
+
+      if (isValid) {
+        numWays += dfs(j + 1)
+      }
+    }
+    return numWays
+  }
+
+  return dfs()
+}
+
+const decodeWaysTab = s => {
+  const dp = Array.from({ length: s.length + 1 }).fill(0)
+
+  dp[0] = 1
+  dp[1] = 1
+
+  for (let i = 2; i <= s.length; i++) {
+    const oneChar = s.substring(i - 1, i)
+    const twoChars = s.substring(i - 2, i)
+
+    if (0 < oneChar < 10) {
+      dp[i] += dp[i - 1]
+    }
+    if (9 < twoChars < 27) {
+      dp[i] += dp[i - 2]
+    }
+  }
+
+  return dp[s.length]
+}
+
+module.exports = {
+  decodeWays,
+  decodeWaysTab,
+}
